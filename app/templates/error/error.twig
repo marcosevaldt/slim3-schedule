@@ -1,0 +1,10 @@
+{% if has_errors() %}
+<div class="alert alert-danger alert-dismissible">
+<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+{% for key, e in errors %}
+    {% for motivo in e %}
+      {{ motivo }}<br>
+    {% endfor %}
+{% endfor %}
+</div>
+{% endif %}
