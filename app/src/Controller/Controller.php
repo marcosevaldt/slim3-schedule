@@ -4,28 +4,21 @@ namespace App\Controller;
 
 /**
  * Comentário de cabeçalho de arquivos
-* Esta classe é uma classe abstrata para gerar o container para as classes se controle
+* Esta classe é uma classe para gerar o container para as classes se controle
 *
 * @author José Felipe e Marcos Ereno
 * @version 0.1
 */
 
 
-abstract class Controller
+class Controller
 {
 		protected $container;
-		protected $resource;
-		protected $consulta;
-		protected $session;
 
 		// construtor para definir o uso do container nas classes filhas
 		public function __construct($container)
 		{
 			$this->container = $container;
-			$this->resource = $container['resource'];
-			$this->consulta = $container['consulta'];
-			$this->validator = $container['validator'];
-			$this->session = $container['session'];
 		}
 
 		// pega todos os atributos que existem no container de forma mágica
