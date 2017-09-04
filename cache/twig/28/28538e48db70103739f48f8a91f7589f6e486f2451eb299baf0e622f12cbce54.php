@@ -45,8 +45,11 @@ class __TwigTemplate_146f43551c86e4ea700813bb845da8d97255606b597d00abbe8c1009cfd
 
     <!-- Main content -->
     <section class=\"content\">
-
-      
+      ";
+        // line 21
+        $this->loadTemplate("flash/flash.twig", "home/index.twig", 21)->display($context);
+        // line 22
+        echo "
 
     </section>
     <!-- /.content -->
@@ -67,7 +70,7 @@ class __TwigTemplate_146f43551c86e4ea700813bb845da8d97255606b597d00abbe8c1009cfd
 
     public function getDebugInfo()
     {
-        return array (  31 => 4,  28 => 3,  11 => 2,);
+        return array (  52 => 22,  50 => 21,  31 => 4,  28 => 3,  11 => 2,);
     }
 
     public function getSourceContext()
@@ -92,8 +95,8 @@ class __TwigTemplate_146f43551c86e4ea700813bb845da8d97255606b597d00abbe8c1009cfd
 
     <!-- Main content -->
     <section class=\"content\">
+      {% include 'flash/flash.twig' %}
 
-      
 
     </section>
     <!-- /.content -->

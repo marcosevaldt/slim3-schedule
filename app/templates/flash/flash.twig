@@ -1,0 +1,9 @@
+{% if flash() > 0 %}
+  {% for tipo,mensagens in flash() %}
+    <div class="alert alert-{{tipo}} alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+      {% for mensagem in mensagens %}
+        {{ mensagem }}
+      {% endfor %}
+  {% endfor %}
+{% endif %}
