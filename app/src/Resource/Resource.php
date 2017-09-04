@@ -15,29 +15,30 @@ use Doctrine\Common\Util\Debug;
 
 class Resource
 {
-	/**
-     * @var \Doctrine\ORM\EntityManager
-     */
 
-	protected $entityManager = null;
+		/**
+	 	* @var \Doctrine\ORM\EntityManager
+	 	*/
+		protected $entityManager = null;
 
     public function __construct(EntityManager $entityManager)
     {
         $this->entityManager = $entityManager;
     }
 
-    public function insert($entity) // metodo que insere registros
+		// metodo que insere registros
+    public function insert($entity)
     {
         $this->entityManager->persist($entity);
         $this->entityManager->flush();
     }
-
-    public function delete($entity) // metodo que deleta registros
+		// metodo que deleta registros
+    public function delete($entity)
     {
         $this->entityManager->remove($entity);
         $this->entityManager->flush();
     }
-
+		// metodo que instancia uma nova entidade
 		public function loadEntity($classname){
         $entityInfo = $this->entityManager->getClassMetadata("App\Entity\\" . $classname);
         $entityMember = $entityInfo->newInstance();

@@ -13,25 +13,28 @@ namespace App\Controller;
 
 abstract class Controller
 {
-	protected $container;
-	protected $resource;
-	protected $consulta;
-	protected $session;
+		protected $container;
+		protected $resource;
+		protected $consulta;
+		protected $session;
 
-	public function __construct($container) // construtor para definir o uso do container nas classes filhas
-	{
-		$this->container = $container;
-		$this->resource = $container['resource'];
-		$this->consulta = $container['consulta'];
-		$this->validator = $container['validator'];
-		$this->session = $container['session'];
-	}
-
-	public function __get($property) // pega todos os atributos que existem no container de forma mágica
-	{
-		if($this->container->{$property})
+		// construtor para definir o uso do container nas classes filhas
+		public function __construct($container)
 		{
-			return $this->container->{$property};
+			$this->container = $container;
+			$this->resource = $container['resource'];
+			$this->consulta = $container['consulta'];
+			$this->validator = $container['validator'];
+			$this->session = $container['session'];
 		}
-	}
+
+		// pega todos os atributos que existem no container de forma mágica
+		public function __get($property)
+		{
+			if($this->container->{$property})
+			{
+				return $this->container->{$property};
+			}
+		}
+		
 }

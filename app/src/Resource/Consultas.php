@@ -17,31 +17,33 @@ use Doctrine\Common\Util\Debug;
 class Consultas
 {
 
-	/**
-     * @var \Doctrine\ORM\EntityManager
-     */
+		/**
+	 * @var \Doctrine\ORM\EntityManager
+	 */
+		protected $entityManager = null;
 
-	protected $entityManager = null;
-
+		// EntityManager via container para efetuar as consultas.
     public function __construct(EntityManager $entityManager)
     {
         $this->entityManager = $entityManager;
     }
 
-	public function buscaUm($entity, $id) // buscar um registro de uma entidade
+		// buscar um registro de uma entidade
+		public function buscaUm($entity, $id)
     {
     	return $objeto = $this->entityManager->find('App\Entity\\'.$entity, $id);
     }
 
-
-    public function buscaTodos($entity) // busca todos os registros
+		// busca todos os registros
+    public function buscaTodos($entity)
     {
     	return $objetos = $this->entityManager->getRepository('App\Entity\\'.$entity)->findAll();
     }
 
-		public function buscaPorEmail($criterio)
+		// buscar um usuario por email
+		public function buscaPorEmail($email)
     {
-        return $objetos = $this->entityManager->getRepository('App\Entity\Usuarios')->findOneBy(array('email' => $criterio));
+        return $objetos = $this->entityManager->getRepository('App\Entity\Usuarios')->findOneBy(array('email' => $email));
     }
 
 }

@@ -1,9 +1,12 @@
 {% include 'interface/librarycss.twig' %}
 {% include 'register/navbar.twig' %}
 
+
 <div class="login-box">
+  <div>
   {% include 'error/error.twig' %}
-  {% include 'flash/danger.twig' %}
+  {% include 'flash/flash.twig' %}
+  </div>
   <div class="login-box-body">
 
     <form action="{{ path_for('login.store')}}" method="post">

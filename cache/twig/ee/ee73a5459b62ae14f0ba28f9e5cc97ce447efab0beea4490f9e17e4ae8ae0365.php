@@ -23,20 +23,20 @@ class __TwigTemplate_723b541d322ab867c301c75d69f6108a5acf0045d31779b0a09247b588c
             $context['_seq'] = twig_ensure_traversable($this->env->getExtension('Knlv\Slim\Views\TwigMessages')->getMessages());
             foreach ($context['_seq'] as $context["tipo"] => $context["mensagens"]) {
                 // line 3
-                echo "  <div class=\"alert alert-";
+                echo "    <div class=\"alert alert-";
                 echo twig_escape_filter($this->env, $context["tipo"], "html", null, true);
                 echo " alert-dismissible\">
-  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">×</button>
-    ";
+    <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">×</button>
+      ";
                 // line 5
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable($context["mensagens"]);
                 foreach ($context['_seq'] as $context["_key"] => $context["mensagem"]) {
                     // line 6
-                    echo "      ";
+                    echo "        ";
                     echo twig_escape_filter($this->env, $context["mensagem"], "html", null, true);
                     echo "
-    ";
+      ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['mensagem'], $context['_parent'], $context['loop']);
@@ -69,11 +69,11 @@ class __TwigTemplate_723b541d322ab867c301c75d69f6108a5acf0045d31779b0a09247b588c
     {
         return new Twig_Source("{% if flash() > 0 %}
   {% for tipo,mensagens in flash() %}
-  <div class=\"alert alert-{{tipo}} alert-dismissible\">
-  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">×</button>
-    {% for mensagem in mensagens %}
-      {{ mensagem }}
-    {% endfor %}
+    <div class=\"alert alert-{{tipo}} alert-dismissible\">
+    <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">×</button>
+      {% for mensagem in mensagens %}
+        {{ mensagem }}
+      {% endfor %}
   {% endfor %}
 {% endif %}
 ", "flash/flash.twig", "/var/www/html/slim3-skeleton/app/templates/flash/flash.twig");
