@@ -22,29 +22,29 @@ class RegisterAction extends Controller{
 		}
 
 		$this->validator->validate($request, [
-				'email' => v::email(),
-				'senha' => v::alnum()->noWhitespace()->length(6, 10),
-				'resenha' => v::equals($request->getParam('senha')),
+			'email' => v::email(),
+			'senha' => v::alnum()->noWhitespace()->length(6, 10),
+			'resenha' => v::equals($request->getParam('senha')),
 		]);
 
 		if ($this->validator->isValid()) {
 
-				$funcao = $this->consulta->buscaUm('Roles', 1);
+			$funcao = $this->consulta->buscaUm('Roles', 1);
 
-				$usuario = $this->resource->loadEntity('Usuarios');
-				$usuario->setEmail($request->getParam('email'));
-				$usuario->setSenha($request->getParam('senha'));
-				$usuario->setIdRole($funcao);
+			$usuario = $this->resource->loadEntity('Usuarios');
+			$usuario->setEmail($request->getParam('email'));
+			$usuario->setSenha($request->getParam('senha'));
+			$usuario->setIdRole($funcao);
 
-				$this->resource->insert($usuario);
+			$this->resource->insert($usuario);
 
-				$this->session->set('userSession', $request->getParam('email'));
+			$this->session->set('userSession', $request->getParam('email'));
 
-				return $response->withRedirect($this->router->pathFor('home.index'));
+			return $response->withRedirect($this->router->pathFor('home.index'));
 		}
 
 		return $this->view->render($response, 'register/index.twig', [
-				 'errors' => $this->validator->getErrors(),
+			 'errors' => $this->validator->getErrors(),
 		 ]);
 	}
 
