@@ -13,21 +13,21 @@ namespace App\Controller;
 
 class Controller
 {
-		protected $container;
+	protected $container;
 
-		// construtor para definir o uso do container nas classes filhas
-		public function __construct($container)
-		{
-			$this->container = $container;
-		}
+	// construtor para definir o uso do container nas classes filhas
+	public function __construct($container)
+	{
+		$this->container = $container;
+	}
 
-		// pega todos os atributos que existem no container de forma mágica
-		public function __get($property)
+	// pega todos os atributos que existem no container de forma mágica
+	public function __get($property)
+	{
+		if($this->container->{$property})
 		{
-			if($this->container->{$property})
-			{
-				return $this->container->{$property};
-			}
+			return $this->container->{$property};
 		}
+	}
 		
 }
