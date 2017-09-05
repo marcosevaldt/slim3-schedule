@@ -4,14 +4,14 @@ namespace App\Controller;
 
 /**
  * Comentário de cabeçalho de arquivos
-* Esta classe é uma classe para gerar o container para as classes se controle
-*
+* Esta classe é uma classe abstrata para que recebimento do container através do construtor, facilitando a reutilização das Actions filhas.
+* O Metodo mágico serve para que as classes filhas não precisem utilizar $this->container->RECURSO, de forma mágica busca nesta classe pai.
 * @author José Felipe e Marcos Ereno
 * @version 0.1
 */
 
 
-class Controller
+abstract class Controller
 {
 	protected $container;
 
