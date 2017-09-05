@@ -89,8 +89,3 @@ $container['consulta'] = function ($c) {
 $container['validator'] = function () {
     return new Awurth\SlimValidation\Validator();
 };
-
-// Controller das Actions
-$container['App\Controller'] = function ($c){
-    return new App\Controller($c);
-};
