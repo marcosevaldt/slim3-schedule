@@ -43,7 +43,7 @@ class __TwigTemplate_26b1fbee1efbad59d0c63921db861a73317ea10527c83c04ba9fb6f9836
           <li class=\"dropdown\">
             <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">";
         // line 26
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["user"] ?? null), "email", array()), "html", null, true);
+        echo twig_escape_filter($this->env, ($context["session"] ?? null), "html", null, true);
         echo " <span class=\"caret\"></span></a>
             <ul class=\"dropdown-menu\">
               <li><a href=\"";
@@ -103,7 +103,7 @@ class __TwigTemplate_26b1fbee1efbad59d0c63921db861a73317ea10527c83c04ba9fb6f9836
 
         <ul class=\"nav navbar-nav navbar-right\">
           <li class=\"dropdown\">
-            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">{{user.email}} <span class=\"caret\"></span></a>
+            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">{{session}} <span class=\"caret\"></span></a>
             <ul class=\"dropdown-menu\">
               <li><a href=\"{{path_for('login.destroy')}}\">Sair</a></li>
             </ul>

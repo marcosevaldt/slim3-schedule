@@ -5,7 +5,7 @@ namespace App\Controller;
 /**
  * Comentário de cabeçalho de arquivos
 * Esta classe é uma classe abstrata para que recebimento do container através do construtor, facilitando a reutilização das Actions filhas.
-* O Metodo mágico serve para que as classes filhas não precisem utilizar $this->container->RECURSO, de forma mágica busca nesta classe pai.
+* O Metodo mágico serve para que as classes filhas possa acessar de forma mágica as propriedades.
 * @author José Felipe e Marcos Ereno
 * @version 0.1
 */
@@ -29,5 +29,5 @@ abstract class Controller
 			return $this->container->{$property};
 		}
 	}
-		
+
 }

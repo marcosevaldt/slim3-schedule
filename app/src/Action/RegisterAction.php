@@ -25,6 +25,9 @@ class RegisterAction extends Controller{
 			'email' => v::email(),
 			'senha' => v::alnum()->noWhitespace()->length(6, 10),
 			'resenha' => v::equals($request->getParam('senha')),
+		], [
+			'length' => 'Senha deve no mínimo 6 e máximo 10 caracteres',
+			'equals' => 'As senhas informadas não são iguais',
 		]);
 
 		if ($this->validator->isValid()) {

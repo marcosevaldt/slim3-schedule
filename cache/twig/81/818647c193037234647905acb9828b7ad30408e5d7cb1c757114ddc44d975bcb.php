@@ -18,33 +18,35 @@ class __TwigTemplate_35fd8590f77f562ec656c7a9596c519b305fe5dcad0602acce82f1a1cec
         // line 1
         if ($this->env->getExtension('Awurth\SlimValidation\ValidatorExtension')->hasErrors()) {
             // line 2
-            echo "<div class=\"alert alert-danger alert-dismissible\">
-<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">×</button>
-";
+            echo "    <div class=\"alert alert-danger alert-dismissible\">
+    <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">×</button>
+        ";
             // line 4
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["errors"] ?? null));
-            foreach ($context['_seq'] as $context["key"] => $context["e"]) {
+            foreach ($context['_seq'] as $context["key"] => $context["error"]) {
                 // line 5
-                echo "    ";
+                echo "            ";
                 $context['_parent'] = $context;
-                $context['_seq'] = twig_ensure_traversable($context["e"]);
+                $context['_seq'] = twig_ensure_traversable($context["error"]);
                 foreach ($context['_seq'] as $context["_key"] => $context["motivo"]) {
                     // line 6
-                    echo "      ";
+                    echo "              ";
                     echo twig_escape_filter($this->env, $context["motivo"], "html", null, true);
                     echo "<br>
-    ";
+            ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['motivo'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
+                // line 8
+                echo "        ";
             }
             $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_iterated'], $context['key'], $context['e'], $context['_parent'], $context['loop']);
+            unset($context['_seq'], $context['_iterated'], $context['key'], $context['error'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
             // line 9
-            echo "</div>
+            echo "    </div>
 ";
         }
     }
@@ -61,20 +63,20 @@ class __TwigTemplate_35fd8590f77f562ec656c7a9596c519b305fe5dcad0602acce82f1a1cec
 
     public function getDebugInfo()
     {
-        return array (  47 => 9,  34 => 6,  29 => 5,  25 => 4,  21 => 2,  19 => 1,);
+        return array (  49 => 9,  43 => 8,  34 => 6,  29 => 5,  25 => 4,  21 => 2,  19 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Twig_Source("{% if has_errors() %}
-<div class=\"alert alert-danger alert-dismissible\">
-<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">×</button>
-{% for key, e in errors %}
-    {% for motivo in e %}
-      {{ motivo }}<br>
-    {% endfor %}
-{% endfor %}
-</div>
+    <div class=\"alert alert-danger alert-dismissible\">
+    <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">×</button>
+        {% for key, error in errors %}
+            {% for motivo in error %}
+              {{ motivo }}<br>
+            {% endfor %}
+        {% endfor %}
+    </div>
 {% endif %}
 ", "error/error.twig", "/var/www/html/slim3-skeleton/app/templates/error/error.twig");
     }

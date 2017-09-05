@@ -12,9 +12,7 @@ class HomeAction extends Controller{
 		 */
 		public function index($request, $response)
 	  {
-				return $this->view->render($response, 'home/index.twig', [
-					'user' => $this->consulta->buscaPorEmail($this->session->get('userSession')),
-				]);
+				return $this->view->render($response, 'home/index.twig');
 	  }
 
 		/**
