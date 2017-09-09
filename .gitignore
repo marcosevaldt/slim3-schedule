@@ -1,5 +1,5 @@
 /vendor/*
 !cache/.gitkeep
-!log/.gitkeep
+!log/.keepme
 composer\.phar
 composer.lock
