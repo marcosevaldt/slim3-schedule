@@ -4,7 +4,6 @@ namespace App\Action;
 
 use Doctrine\Common\Util\Debug;
 use App\Controller\Controller;
-use Respect\Validation\Validator as v;
 
 class LoginAction extends Controller{
 
