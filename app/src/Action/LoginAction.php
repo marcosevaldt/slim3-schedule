@@ -24,7 +24,8 @@ class LoginAction extends Controller{
 
 		if($user->getSenha() == md5($request->getParam('senha'))){
 
-			$this->session->set('userSession', $request->getParam('email'));
+			$this->session->set('userSession', $user->getEmail());
+			$this->session->set('role', $user->getRoleDescricao());
 		 	return $response->withRedirect($this->router->pathFor('home.index'));
 		}
 

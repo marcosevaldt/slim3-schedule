@@ -19,6 +19,9 @@ return [
             'Convidado' => [
                 'home.index',
             ],
+            'Admin' => [
+                'home.index',
+            ],
         ],
         // Monolog Settings
         'logger' => [

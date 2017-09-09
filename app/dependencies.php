@@ -16,6 +16,7 @@ $container['view'] = function ($c) {
     $view->addExtension(new Knlv\Slim\Views\TwigMessages(new Slim\Flash\Messages()));
     // Declarado como variável global a sessao do usuario
     $view->getEnvironment()->addGlobal('session', $c->get('session')->get('userSession'));
+    $view->getEnvironment()->addGlobal('role', $c->get('session')->get('role'));
 
     return $view;
 };
