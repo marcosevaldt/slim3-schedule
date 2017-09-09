@@ -35,11 +35,6 @@ class Usuarios
 		*/
 		private $idRole;
 
-		/**
-		* Get id
-		*
-		* @return string
-		*/
 		public function getId()
 		{
 			return $this->id;
@@ -72,5 +67,5 @@ class Usuarios
 		public function getRoleDescricao(){
 			return $this->getIdRole()->getDescricao();
 		}
-		
+
 }

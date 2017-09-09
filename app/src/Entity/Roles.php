@@ -23,11 +23,6 @@ class Roles
 		 */
 		private $descricao;
 
-		/**
-     * Get id
-     *
-     * @return string
-     */
     public function getId()
     {
         return $this->id;

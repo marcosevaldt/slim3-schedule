@@ -3,8 +3,8 @@
 namespace App\Action;
 
 use Doctrine\Common\Util\Debug;
-use App\Controller\Controller;
 use Respect\Validation\Validator as v;
+use App\Controller\Controller;
 
 class RegisterAction extends Controller{
 
