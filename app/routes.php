@@ -11,3 +11,4 @@ $app->post('/register', 'App\Action\RegisterAction:store')->setName('register.st
 
 // Home
 $app->get('/home', 'App\Action\HomeAction:index')->setName('home.index')->add($guardian);
+$app->get('/home/general', 'App\Action\HomeAction:general')->setName('home.general')->add($guardian);

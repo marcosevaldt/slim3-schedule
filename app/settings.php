@@ -21,6 +21,7 @@ return [
             ],
             'Admin' => [
                 'home.index',
+                'home.general',
             ],
         ],
         // Monolog Settings

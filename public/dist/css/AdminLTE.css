@@ -4940,3 +4940,14 @@ table.text-center th {
     white-space: normal !important;
   }
 }
+
+/* Layout */
+.wrapper {
+  /*min-height: 100%;
+  position: relative;
+  overflow: hidden;*/
+  width: 100%;
+  min-height: 100%;
+  height: auto !important;
+  position: absolute;
+}

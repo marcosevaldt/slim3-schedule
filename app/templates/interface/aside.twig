@@ -14,7 +14,9 @@
           <li><a href="#">Submenu 3</a></li>
         </ul>
       </li>
-      <li class="active"><a href="#"><i class="fa fa-circle"></i> <span>Menu 2</span></a></li>
+      {% if role == 'Admin' %}
+      <li class="active"><a href="{{path_for('home.general')}}"><i class="fa fa-circle"></i> <span>General</span></a></li>
+      {% endif %}
     </ul>
   </section>
 </aside>

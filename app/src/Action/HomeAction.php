@@ -71,4 +71,9 @@ class HomeAction extends Controller{
 
 		}
 
+		public function general($request, $response)
+		{
+			return $this->view->render($response, 'home/general.twig');
+		}
+
 }
