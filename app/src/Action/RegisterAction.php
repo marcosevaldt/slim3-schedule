@@ -41,7 +41,8 @@ class RegisterAction extends Controller{
 
 			$this->resource->insert($usuario);
 
-			$this->session->set('userSession', $user->getEmail());
+			$this->session->set('userSession', $request->getParam('email'));
+			$this->session->set('role', $funcao->getDescricao());
 
 			return $response->withRedirect($this->router->pathFor('home.index'));
 		}
