@@ -1,10 +1,10 @@
 {% include 'interface/librarycss.twig' %}
-{% include 'register/navbar.twig' %}
-
-<div class="login-box">
+{% include 'login/navbar.twig' %}
+<br /><br />
+<div class="login-box well">
   {% include 'error/error.twig' %}
   {% include 'flash/flash.twig' %}
-    <div class="login-box-body">
+    <div class="login-box-body" style="background-color:transparent;">
       <form action="{{ path_for('login.store')}}" method="post">
 
         <div class="form-group has-feedback">

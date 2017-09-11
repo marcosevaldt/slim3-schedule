@@ -23,11 +23,19 @@ class Roles
 		 */
 		private $descricao;
 
+		/**
+		 * [getId description]
+		 * @return [String] [description]
+		 */
     public function getId()
     {
         return $this->id;
     }
 
+		/**
+		 * [getDescricao description]
+		 * @return [String] [description]
+		 */
     public function getDescricao(){
         return $this->descricao;
     }
