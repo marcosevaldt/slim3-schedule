@@ -1,24 +1,9 @@
 {% extends 'interface/home.twig' %}
 {% block content %}
 
-<div class="content-wrapper">
-  <section class="content-header">
-    <h1>
-      Home Page
-      <small>página inicial</small>
-    </h1>
-  </section>
+{% include 'error/error.twig' %}
+{% include 'flash/flash.twig' %}
 
-  <section class="content">
-    {% include 'error/error.twig' %}
-    {% include 'flash/flash.twig' %}
-    <div class='row'>
-
-        <!--Main Content here-->
-        
-
-    </div>
-  </section>
-</div>
+<div id='calendar'></div>
 
 {% endblock %}

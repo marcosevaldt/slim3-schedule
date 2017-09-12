@@ -1,31 +1,93 @@
 <!-- Body JS-->
-  <!-- jQuery 2.2.3 -->
-  <script src="{{base_url()}}/plugins/jQuery/jquery-2.2.3.min.js"></script>
+
+  <!-- JQuery Slim 3.1.1 -->
+  <script src="{{base_url()}}/bootstrap4/js/jquery-3.1.1.slim.min.js"></script>
+  <!-- Tether -->
+  <script src="{{base_url()}}/bootstrap4/js/tether.min.js"></script>
   <!-- Bootstrap 3.3.6 -->
-  <script src="{{base_url()}}/bootstrap/js/bootstrap.min.js"></script>
-  <!-- AdminLTE App -->
-  <script src="{{base_url()}}/dist/js/app.min.js"></script>
-  <!-- Moment JS -->
-  <script src="{{base_url()}}/plugins/moment/moment.min.js"></script>
-  <!-- ChartJS 1.0.1 -->
-  <script src="{{base_url()}}/plugins/chartjs/Chart.min.js"></script>
-  <!-- JQuery DataTables -->
-  <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
-  <script src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
-  <script src="https://cdn.datatables.net/responsive/2.1.1/js/responsive.bootstrap.min.js"></script>
-  <!-- Select2 -->
-  <script src="{{base_url()}}/plugins/select2/select2.full.min.js"></script>
-  <!-- iCheck 1.0.1 -->
-  <script src="{{base_url()}}/plugins/iCheck/icheck.min.js"></script>
-  <!-- Datepicker -->
-  <script src="{{base_url()}}/plugins/datepicker/bootstrap-datepicker.js"></script>
-  <!-- DateTimePicker -->
-  <script src="{{base_url()}}/plugins/datetimepicker/bootstrap-datetimepicker.js"></script>
-  <script src="{{base_url()}}/plugins/datetimepicker/collapse.js"></script>
-  <script src="{{base_url()}}/plugins/datetimepicker/transition.js"></script>
+  <script src="{{base_url()}}/bootstrap4/js/bootstrap.min.js"></script>
+  <!-- Full Calendar 3.5.1 -->
+  <script src="{{base_url()}}/calendar/js/moment.min.js"></script>
+  <script src="{{base_url()}}/calendar/js/fullcalendar.min.js"></script>
+  <script src="{{base_url()}}/calendar/js/pt-br.js"></script>
+
+
 <!--ENDBODYJS-->
 
 <!--ESTE DEVE SER O ULTIMO POR LOADAR AS CLASSES ACIMA-->
-<!-- Main Script-->
-<script src="{{base_url()}}/plugins/scripts/main.js"></script>
+  <!-- Main Script-->
+  <script src="{{base_url()}}/plugins/scripts/main.js"></script>
+
+<script>
+$(document).ready(function() {
+
+  $('#calendar').fullCalendar({
+    eventClick: function(calEvent, jsEvent, view) {
+      window.location.href = "http://localhost/calendar/public/home/edit/" + calEvent.id;
+    },
+    header: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'month,agendaWeek,agendaDay,listWeek'
+    },
+    defaultDate: '{{ "now"|date("Y/m/d") }}',
+    locale: 'pt-br',
+    navLinks: true, // can click day/week names to navigate views
+    editable: true,
+    eventLimit: true, // allow "more" link when too many events
+    events: [
+      {% for evento in eventos %}
+      {
+
+        id: '{{evento.id}}',
+        title: '{{evento.title}}',
+        start: '{{evento.start.date}}',
+        end: '{{evento.end.date}}'
+      },
+      {% endfor %}
+    ],
+    eventResize: function(event, delta, revertFunc) {
+        if (!confirm("Deseja mesmo alterar?")) {
+            revertFunc();
+        }else{
+          $.ajax({
+              type: "POST",
+              url: "/calendar/public/home/update",
+              data: {
+                id: event.id,
+                start: event.start.format(),
+                end: event.end.format(),
+                title: event.title,
+              },   // <== change is here
+              success: function(msg){
+                  alert('Alterado com sucesso!');
+              }
+          });
+        }
+    },
+    eventDrop: function(event, delta, revertFunc) {
+
+      if (!confirm("Deseja mesmo alterar?")) {
+          revertFunc();
+      }else{
+        $.ajax({
+            type: "POST",
+            url: "/calendar/public/home/update",
+            data: {
+              id: event.id,
+              start: event.start.format(),
+              end: event.end.format(),
+              title: event.title,
+            },   // <== change is here
+            success: function(msg){
+                alert('Alterado com sucesso!');
+            }
+        });
+      }
+
+    }
+  });
+
+});
+
+</script>

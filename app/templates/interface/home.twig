@@ -1,26 +1,24 @@
 <!DOCTYPE html>
-<html style="height: auto; min-height: 100%;">
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>MEPanel</title>
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>King Calendar</title>
 
     {% include 'interface/librarycss.twig' %}
 
   </head>
-  <body class="hold-transition skin-blue sidebar-mini" style="height: auto; min-height: 100%;">
-    <div class="wrapper" style="height: auto; min-height: 100%;">
 
-      {% include 'interface/header.twig' %}
-      {% include 'interface/aside.twig' %}
-      {% block content %} {% endblock %}
-      {% include 'interface/controlsidebar.twig' %}
+  <body>
 
-      <div class="control-sidebar-bg"></div>
-
+    {% include 'interface/navbar.twig' %}
+    <div class="container">
+    {% block content %} {% endblock %}
     </div>
-    {% include 'interface/libraryjs.twig' %}
 
+    {% include 'interface/libraryjs.twig' %}
   </body>
 </html>
