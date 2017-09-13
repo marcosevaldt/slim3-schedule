@@ -26,9 +26,11 @@ $(document).ready(function() {
     },
     defaultDate: '{{ "now"|date("Y/m/d") }}',
     locale: 'pt-br',
-    navLinks: true, // can click day/week names to navigate views
+    navLinks: true,
     editable: true,
-    eventLimit: true, // allow "more" link when too many events
+    eventLimit: true,
+    eventStartEditable: false,
+    eventDurationEditable: false,
     events: [
       {% for agendamento in agendamentos %}
       {
