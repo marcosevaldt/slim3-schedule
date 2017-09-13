@@ -8,17 +8,37 @@ use App\Controller\Controller;
 
 class RegisterAction extends Controller{
 
+	/**
+	 * Formulário para criação de uma conta
+	 * @param  [type] $request  [description]
+	 * @param  [type] $response [description]
+	 * @return [type]           [description]
+	 */
 	public function index($request, $response)
 	{
+		/**
+		 * Verificação de usuário com sessao
+		 * @var [type]
+		 */
 		if(!$this->session->get('userSession')){
 			return $this->view->render($response, 'register/index.twig');
 		}
-			return $response->withRedirect($this->router->pathFor('home.index'));
+		return $response->withRedirect($this->router->pathFor('home.index'));
 	}
 
+	/**
+	 * Armazena os dados vindo do formulário de registro
+	 * @param  [type] $request  [description]
+	 * @param  [type] $response [description]
+	 * @return [type]           [description]
+	 */
 	public function store($request, $response)
 	{
 
+		/**
+    * Verificação de um usuário existente
+    * @var [type]
+    */
 		if($this->consulta->buscaPorEmail($request->getParam('email'))){
 			$this->flash->addMessage('danger', 'Email já cadastrado, utilize outro.');
 			return $this->view->render($response, 'register/index.twig');
@@ -51,8 +71,8 @@ class RegisterAction extends Controller{
 		}
 
 		return $this->view->render($response, 'register/index.twig', [
-			 'errors' => $this->validator->getErrors(),
-		 ]);
+			'errors' => $this->validator->getErrors(),
+		]);
 	}
 
 }

@@ -8,82 +8,89 @@ use App\Controller\Controller;
 
 class SalasAction extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * GET
-     */
-    public function index($request, $response)
-    {
-        return $this->view->render($response, 'home/salas/index.twig', [
-          'salas' => $this->consulta->buscaTodos('Salas'),
-        ]);
-    }
+  /**
+   * Listagem de todas as salas
+   * @param  [type] $request  [description]
+   * @param  [type] $response [description]
+   * @return [type]           [description]
+   */
+  public function index($request, $response)
+  {
+    return $this->view->render($response, 'home/salas/index.twig', [
+      'salas' => $this->consulta->buscaTodos('Salas'),
+    ]);
+  }
 
-    /**
-     * Show the form for creating a new resource.
-     * GET
-     */
-    public function create($request, $response)
-    {
-      return $this->view->render($response, 'home/salas/create.twig');
-    }
+  /**
+   * Formulário para criação das salas
+   * @param  [type] $request  [description]
+   * @param  [type] $response [description]
+   * @return [type]           [description]
+   */
+  public function create($request, $response)
+  {
+    return $this->view->render($response, 'home/salas/create.twig');
+  }
 
-    /**
-     * Store a newly created resource in storage.
-     * POST
-     */
-    public function store($request, $response, $args)
-    {
-      $sala = $this->resource->loadEntity('Salas');
-      $sala->setNumero($request->getParam('numero'));
-      $this->resource->insert($sala);
-      $this->flash->addMessage('success', 'Sala cadastrada com sucesso!');
-      return $response->withRedirect($this->router->pathFor('home.salas.show'));
-    }
+  /**
+   * Armazena os dados vindos do formulário
+   * @param  [type] $request  [description]
+   * @param  [type] $response [description]
+   * @param  [type] $args     [description]
+   * @return [type]           [description]
+   */
+  public function store($request, $response, $args)
+  {
+    $sala = $this->resource->loadEntity('Salas');
+    $sala->setNumero($request->getParam('numero'));
+    $this->resource->insert($sala);
+    $this->flash->addMessage('success', 'Sala cadastrada com sucesso!');
+    return $response->withRedirect($this->router->pathFor('home.salas.show'));
+  }
 
-    /**
-     * Display the specified resource.
-     * GET
-     */
-    public function show($request, $response, $args)
-    {
+  /**
+   * Formulário para edição das salas
+   * @param  [type] $request  [description]
+   * @param  [type] $response [description]
+   * @param  [type] $args     [description]
+   * @return [type]           [description]
+   */
+  public function edit($request, $response, $args)
+  {
+    return $this->view->render($response, 'home/salas/edit.twig', [
+      'sala' => $this->consulta->buscaUm('Salas', $args['id']),
+    ]);
+  }
 
-    }
+  /**
+   * Atualiza os dados vindos do formulário
+   * @param  [type] $request  [description]
+   * @param  [type] $response [description]
+   * @param  [type] $args     [description]
+   * @return [type]           [description]
+   */
+  public function update($request, $response, $args)
+  {
+    $sala = $this->consulta->buscaUm('Salas', $request->getParam('id'));
+    $sala->setNumero($request->getParam('numero'));
+    $this->resource->insert($sala);
+    $this->flash->addMessage('success', 'Sala atualizada com sucesso!');
+    return $response->withRedirect($this->router->pathFor('home.salas.show'));
+  }
 
-    /**
-     * Show the form for editing the specified resource.
-     * GET or PUT
-     */
-    public function edit($request, $response, $args)
-    {
-      return $this->view->render($response, 'home/salas/edit.twig', [
-        'sala' => $this->consulta->buscaUm('Salas', $args['id']),
-      ]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     * POST
-     */
-    public function update($request, $response, $args)
-    {
-      $sala = $this->consulta->buscaUm('Salas', $request->getParam('id'));
-      $sala->setNumero($request->getParam('numero'));
-      $this->resource->insert($sala);
-      $this->flash->addMessage('success', 'Sala atualizada com sucesso!');
-      return $response->withRedirect($this->router->pathFor('home.salas.show'));
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * POST or DELETE
-     */
-    public function destroy($request, $response, $args)
-    {
-      $sala = $this->consulta->buscaUm('Salas', $args['id']);
-      $this->resource->delete($sala);
-      $this->flash->addMessage('success', 'Sala deletada com sucesso!');
-      return $response->withRedirect($this->router->pathFor('home.salas.show'));
-    }
+  /**
+   * Removação de uma sala
+   * @param  [type] $request  [description]
+   * @param  [type] $response [description]
+   * @param  [type] $args     [description]
+   * @return [type]           [description]
+   */
+  public function destroy($request, $response, $args)
+  {
+    $sala = $this->consulta->buscaUm('Salas', $args['id']);
+    $this->resource->delete($sala);
+    $this->flash->addMessage('success', 'Sala deletada com sucesso!');
+    return $response->withRedirect($this->router->pathFor('home.salas.show'));
+  }
 
 }
