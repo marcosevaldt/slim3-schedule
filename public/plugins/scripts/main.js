@@ -1,1 +1,6 @@
-$('.datetimepicker').datetimepicker({format: 'dd/mm/yyyy hh:ii'});
+$('.datetimepicker').datetimepicker({
+  format: 'dd/mm/yyyy hh:ii',
+  minView:1,
+  autoclose:true,
+  initialDate: new Date(new Date().setMinutes(0)),
+});
