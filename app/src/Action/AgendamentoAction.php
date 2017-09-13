@@ -79,7 +79,7 @@ class AgendamentoAction extends Controller{
 
 		public function destroy($request, $response)
 		{
-			$agendamento = $this->consulta->buscaUm('Agendamentos', $request->getParam('id_sala'));
+			$agendamento = $this->consulta->buscaUm('Agendamentos', $request->getParam('id_agendamento'));
 			$this->resource->delete($agendamento);
 			$this->flash->addMessage('success', 'Agendamento excluido com sucesso!!');
 			return $response->withRedirect($this->router->pathFor('home.agendamento.show'));
@@ -90,7 +90,7 @@ class AgendamentoAction extends Controller{
 			// Necessário remover o periodo anterior, senão irá cair no metodo abaixo e será
 			// informado que este horario já esta agendado, com isso removo o horario previamente marcado
 			// verifico se nao esta tentando marcar em horario de outro usuario e cadastro
-			$periodo = $this->consulta->buscaUm('Agendamentos', $request->getParam('id_sala'));
+			$periodo = $this->consulta->buscaUm('Agendamentos', $request->getParam('id_agendamento'));
 			$this->resource->delete($periodo);
 
 			if($this->consulta->buscaAgendamentoPorData($request->getParam('periodo_inicial'), $request->getParam('sala'))){
