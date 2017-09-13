@@ -1,0 +1,41 @@
+{% extends 'interface/home.twig' %}
+{% block content %}
+
+{% include 'error/error.twig' %}
+{% include 'flash/flash.twig' %}
+
+<div class="col-md-4 offset-md-4">
+
+<form>
+
+  <div class="form-group">
+    <label for="sala">Número da Sala</label>
+    <select class="form-control" name="sala">
+      {% for sala in salas %}
+      <option value="{{sala.id}}" {% if agendamento.id == sala.id %} selected {% endif %}>{{sala.numero}}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="form-group row">
+    <label for="periodo_inicial" class="col-8 col-form-label">Período Inicial</label>
+    <div class="col-12">
+      <input class="form-control datetimepicker" type="text" name="periodo_inicial" required value="{{agendamento.periodoinicial.date|date('d/m/Y H:i')}}">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="periodo_final" class="col-8 col-form-label">Período Final</label>
+    <div class="col-12">
+      <input class="form-control datetimepicker" type="text"  name="periodo_final" value="{{agendamento.periodofinal.date|date('d/m/Y H:i')}}" required>
+    </div>
+  </div>
+
+
+  <input type="hidden" name="email_user" value="{{session}}"/>
+
+  <button class="btn btn-primary" formmethod="POST" formaction="{{path_for('home.agendamento.store')}}">Atualizar</button>
+</form>
+
+</div>
+{% endblock %}

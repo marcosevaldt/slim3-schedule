@@ -51,4 +51,13 @@ class AgendamentoAction extends Controller{
 
 		}
 
+		public function edit($request, $response, $args)
+		{
+			$agendamento = $this->consulta->buscaUm('Agendamentos', $args['id']);
+			return $this->view->render($response, 'home/agendamento/edit.twig', [
+				'agendamento' => $agendamento,
+				'salas' => $this->consulta->buscaTodos('Salas'),
+			]);
+		}
+
 }

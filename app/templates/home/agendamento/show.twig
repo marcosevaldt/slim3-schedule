@@ -17,7 +17,7 @@ $(document).ready(function() {
 
   $('#calendar').fullCalendar({
     eventClick: function(calEvent, jsEvent, view) {
-      window.location.href = "http://localhost/calendar/public/home/edit/" + calEvent.id;
+      window.location.href = "{{path_for('home.agendamento.edit', {id:calEvent.id})}}" + calEvent.id;
     },
     header: {
       left: 'prev,next today',
