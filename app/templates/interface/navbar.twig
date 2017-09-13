@@ -13,12 +13,14 @@
         <a class="nav-link" href="{{path_for('register.index')}}">Registrar</a>
       </li>
       {% else %}
-      <li class="nav-item">
-        <a class="nav-link" href="{{path_for('home.user.show')}}">Cadastrar Usuários</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{path_for('home.salas.show')}}">Cadastar Salas</a>
-      </li>
+        {% if role == 'Admin' %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{path_for('home.user.show')}}">Cadastrar Usuários</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{path_for('home.salas.show')}}">Cadastar Salas</a>
+          </li>
+        {% endif  %}
       <li class="nav-item">
         <a class="nav-link" href="{{path_for('home.agendamento.show')}}">Agendamentos</a>
       </li>

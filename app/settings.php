@@ -18,6 +18,13 @@ return [
         'auth' => [
             'Convidado' => [
                 'home.index',
+                'home.agendamento.show',
+                'home.agendamento.calendar',
+                'home.agendamento.agendar',
+                'home.agendamento.store',
+                'home.agendamento.edit',
+                'home.agendamento.destroy',
+                'home.agendamento.update',
             ],
             'Admin' => [
                 'home.index',
@@ -40,7 +47,7 @@ return [
                 'home.agendamento.store',
                 'home.agendamento.edit',
                 'home.agendamento.destroy',
-                'home.agendamento.update',            
+                'home.agendamento.update',
             ],
         ],
         // Monolog Settings

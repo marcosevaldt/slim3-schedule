@@ -104,6 +104,11 @@ class UserAction extends Controller
   			'equals' => 'As senhas informadas não são iguais',
   		]);
 
+      if($this->consulta->buscaPorEmail($request->getParam('email'))){
+  			$this->flash->addMessage('danger', 'Email já cadastrado, utilize outro.');
+  			return $response->withRedirect($this->router->pathFor('home.user.show'));
+  		}
+
       if ($this->validator->isValid()) {
 
         $user = $this->consulta->buscaUm('Usuarios', $request->getParam('id'));
