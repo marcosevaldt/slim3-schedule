@@ -26,6 +26,7 @@ return [
                 'home.agendamento.edit',
                 'home.agendamento.destroy',
                 'home.agendamento.update',
+                'home.agendamento.agendamentos',
             ],
             'Admin' => [
                 'home.index',
@@ -50,6 +51,7 @@ return [
                 'home.agendamento.edit',
                 'home.agendamento.destroy',
                 'home.agendamento.update',
+                'home.agendamento.agendamentos',
             ],
         ],
         // Monolog Settings

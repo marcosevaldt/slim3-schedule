@@ -36,3 +36,4 @@ $app->post('/home/agendamento/agendar/store', 'App\Action\AgendamentoAction:stor
 $app->get('/home/agendamento/agendar/edit/{id}', 'App\Action\AgendamentoAction:edit')->setName('home.agendamento.edit')->add($guardian);
 $app->post('/home/agendamento/agendar/destroy', 'App\Action\AgendamentoAction:destroy')->setName('home.agendamento.destroy')->add($guardian);
 $app->post('/home/agendamento/agendar/update', 'App\Action\AgendamentoAction:update')->setName('home.agendamento.update')->add($guardian);
+$app->get('/home/agendamento/agendamentos', 'App\Action\AgendamentoAction:agendamentos')->setName('home.agendamento.agendamentos')->add($guardian);

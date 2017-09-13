@@ -117,4 +117,13 @@ class AgendamentoAction extends Controller{
 
 		}
 
+		public function agendamentos($request, $response)
+		{
+			$user = $this->consulta->buscaPorEmail($this->session->get('userSession'));
+			$agendamentos = $this->consulta->buscaAgendamentoPorUsuario($user);
+			return $this->view->render($response, 'home/agendamento/agendamentos.twig', [
+				'agendamentos' => $agendamentos,
+			]);
+		}
+
 }

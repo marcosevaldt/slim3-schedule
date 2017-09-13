@@ -55,4 +55,8 @@ class Consultas
 			return $objetos = $this->entityManager->getRepository('App\Entity\Agendamentos')->findBy(array('idSala' => $sala ,'periodoInicial' => $date));
 		}
 
+		public function buscaAgendamentoPorUsuario($userId){
+			return $objetos = $this->entityManager->getRepository('App\Entity\Agendamentos')->findBy(array('idUsuario' => $userId));
+		}
+
 }

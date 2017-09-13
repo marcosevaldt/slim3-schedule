@@ -1,0 +1,32 @@
+{% extends 'interface/home.twig' %}
+{% block content %}
+
+{% include 'error/error.twig' %}
+{% include 'flash/flash.twig' %}
+<a class="btn btn-warning" href="{{path_for('home.index')}}">Voltar</a>
+<div class="col-md-8 offset-md-2">
+
+  <div style="margin-bottom:5%;">
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Número da Sala</th>
+        <th>Periodo Inicial</th>
+        <th>Periodo Final</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for agendamento in agendamentos %}
+      <tr>
+        <td>{{agendamento.idsala.numero}}</td>
+        <td>{{agendamento.periodoInicial.date|date('d/m/Y H:i')}}</td>
+        <td>{{agendamento.periodoFinal.date|date('d/m/Y H:i')}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+</div>
+
+{% endblock %}
