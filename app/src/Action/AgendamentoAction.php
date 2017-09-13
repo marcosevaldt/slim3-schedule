@@ -85,4 +85,36 @@ class AgendamentoAction extends Controller{
 			return $response->withRedirect($this->router->pathFor('home.agendamento.show'));
 		}
 
+		public function update($request, $response)
+		{
+			// Necessário remover o periodo anterior, senão irá cair no metodo abaixo e será
+			// informado que este horario já esta agendado, com isso removo o horario previamente marcado
+			// verifico se nao esta tentando marcar em horario de outro usuario e cadastro
+			$periodo = $this->consulta->buscaUm('Agendamentos', $request->getParam('id_sala'));
+			$this->resource->delete($periodo);
+
+			if($this->consulta->buscaAgendamentoPorData($request->getParam('periodo_inicial'), $request->getParam('sala'))){
+				$this->flash->addMessage('danger', 'Já existe agendamento neste horário para esta sala!');
+				return $response->withRedirect($this->router->pathFor('home.agendamento.agendar'));
+			}
+
+			$date = new \DateTime(str_replace('/', '-', $request->getParam('periodo_inicial')));
+			$date->modify('+1 hour');
+			$dataFinal = $date->format('d-m-Y H:i');
+
+			$sala = $this->consulta->buscaUm('Salas', $request->getParam('sala'));
+			$user = $this->consulta->buscaPorEmail($request->getParam('email_user'));
+			$agendamento = $this->resource->loadEntity('Agendamentos');
+			$agendamento->setPeriodoInicial($request->getParam('periodo_inicial'));
+			$agendamento->setPeriodoFinal($dataFinal);
+			$agendamento->setIdSala($sala);
+			$agendamento->setIdUsuario($user);
+			$this->resource->insert($agendamento);
+
+
+			$this->flash->addMessage('success', 'Agendamento atualizado com sucesso!');
+			return $response->withRedirect($this->router->pathFor('home.agendamento.show'));
+
+		}
+
 }

@@ -35,3 +35,4 @@ $app->get('/home/agendamento/agendar', 'App\Action\AgendamentoAction:showAgendar
 $app->post('/home/agendamento/agendar/store', 'App\Action\AgendamentoAction:store')->setName('home.agendamento.store');
 $app->get('/home/agendamento/agendar/edit/{id}', 'App\Action\AgendamentoAction:edit')->setName('home.agendamento.edit');
 $app->post('/home/agendamento/agendar/destroy', 'App\Action\AgendamentoAction:destroy')->setName('home.agendamento.destroy');
+$app->post('/home/agendamento/agendar/update', 'App\Action\AgendamentoAction:update')->setName('home.agendamento.update');
