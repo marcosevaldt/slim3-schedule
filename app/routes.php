@@ -33,5 +33,5 @@ $app->get('/home/agendamento/show', 'App\Action\AgendamentoAction:index')->setNa
 $app->get('/home/agendamento/calendario/{id}', 'App\Action\AgendamentoAction:showCalendar')->setName('home.agendamento.calendar');
 $app->get('/home/agendamento/agendar', 'App\Action\AgendamentoAction:showAgendarSala')->setName('home.agendamento.agendar');
 $app->post('/home/agendamento/agendar/store', 'App\Action\AgendamentoAction:store')->setName('home.agendamento.store');
-
 $app->get('/home/agendamento/agendar/edit/{id}', 'App\Action\AgendamentoAction:edit')->setName('home.agendamento.edit');
+$app->post('/home/agendamento/agendar/destroy', 'App\Action\AgendamentoAction:destroy')->setName('home.agendamento.destroy');

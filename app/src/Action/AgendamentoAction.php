@@ -72,4 +72,12 @@ class AgendamentoAction extends Controller{
 			]);
 		}
 
+		public function destroy($request, $response)
+		{
+			$agendamento = $this->consulta->buscaUm('Agendamentos', $request->getParam('id_sala'));
+			$this->resource->delete($agendamento);
+			$this->flash->addMessage('success', 'Agendamento excluido com sucesso!!');
+			return $response->withRedirect($this->router->pathFor('home.agendamento.show'));
+		}
+
 }

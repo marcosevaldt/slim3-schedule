@@ -33,8 +33,10 @@
 
 
   <input type="hidden" name="email_user" value="{{session}}"/>
+  <input type="hidden" name="id_sala" value="{{agendamento.id}}"/>
 
   <button class="btn btn-primary" formmethod="POST" formaction="{{path_for('home.agendamento.store')}}">Atualizar</button>
+  <button class="btn btn-danger" formmethod="POST" formaction="{{path_for('home.agendamento.destroy')}}">Exlcuir Agendamento</button>
 </form>
 
 </div>
