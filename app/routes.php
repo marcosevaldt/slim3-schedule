@@ -28,7 +28,7 @@ $app->get('/home/salas/edit/{id}', 'App\Action\SalasAction:edit')->setName('home
 $app->post('/home/salas/update', 'App\Action\SalasAction:update')->setName('home.salas.update')->add($guardian);
 $app->get('/home/salas/destroy/{id}', 'App\Action\SalasAction:destroy')->setName('home.salas.destroy')->add($guardian);
 
-// Agendamento
+// Agendamentos
 $app->get('/home/agendamento/show', 'App\Action\AgendamentoAction:index')->setName('home.agendamento.show')->add($guardian);
 $app->get('/home/agendamento/calendario/{id}', 'App\Action\AgendamentoAction:showCalendar')->setName('home.agendamento.calendar')->add($guardian);
 $app->get('/home/agendamento/agendar', 'App\Action\AgendamentoAction:showAgendarSala')->setName('home.agendamento.agendar')->add($guardian);

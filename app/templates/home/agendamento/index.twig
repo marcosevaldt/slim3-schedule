@@ -4,33 +4,44 @@
 {% include 'error/error.twig' %}
 {% include 'flash/flash.twig' %}
 <a class="btn btn-warning" href="{{path_for('home.index')}}">Voltar</a>
-<div class="col-md-6 offset-md-3">
 
-  <div style="margin-bottom:5%;">
-  <a class="btn btn-primary" href="{{path_for('home.agendamento.agendar')}}">Agendar Sala</a>
-  </div>
+<div class="row">
+    <div class="col-md-6 offset-md-2">
+      <div style="margin-bottom:5%;">
+      <a class="btn btn-primary" href="{{path_for('home.agendamento.agendar')}}">Agendar Sala</a>
+      </div>
 
-  <div style="margin-bottom:5%;">
-  </div>
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>Número da Sala</th>
-        <th>Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for sala in salas %}
-      <tr>
-        <td>{{sala.numero}}</td>
-        <td>
-          <a class="btn btn-primary" href="{{path_for('home.agendamento.calendar', {id: sala.id} )}}">Visualizar Calendário</a>
-        </td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-
+      <div style="margin-bottom:5%;">
+      </div>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Número da Sala</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for sala in salas %}
+          <tr>
+            <td>{{sala.numero}}</td>
+            <td>
+              <a class="btn btn-primary" href="{{path_for('home.agendamento.calendar', {id: sala.id} )}}">Visualizar Calendário</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="col">
+      <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Agendamento de Salas</h4>
+        <p>Aqui você poderá verificar todas as salas disponíveis, e seus respectivos horários vagos através do calendário.</p>
+        <p class="mb-0">Obs: Todos alocações das salas por padrão tem a duração de 1 hora.</p>
+      </div>
+    </div>
 </div>
+
+
+
 
 {% endblock %}
