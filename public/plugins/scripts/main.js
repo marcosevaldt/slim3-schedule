@@ -3,4 +3,6 @@ $('.datetimepicker').datetimepicker({
   minView:1,
   autoclose:true,
   initialDate: new Date(new Date().setMinutes(0)),
+  language: 'pt-BR',
+  fontAwesome: true,
 });
