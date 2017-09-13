@@ -10,7 +10,7 @@
 
   <div class="form-group">
     <label for="sala">Número da Sala</label>
-    <select class="form-control" name="sala">
+    <select class="form-control custom-select" name="sala">
       {% for sala in salas %}
       <option value="{{sala.id}}" {% if agendamento.id == sala.id %} selected {% endif %}>{{sala.numero}}</option>
       {% endfor %}
