@@ -1,0 +1,33 @@
+{% extends 'interface/home.twig' %}
+{% block content %}
+
+{% include 'error/error.twig' %}
+{% include 'flash/flash.twig' %}
+
+<div class="col-md-6 offset-md-3">
+
+  <div style="margin-bottom:5%;">
+  <a class="btn btn-primary" href="{{path_for('home.user.create')}}">Adicionar Usuário</a>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for usuario in usuarios %}
+      <tr>
+        <td>{{usuario.email}}</td>
+        <td>
+          <a class="btn btn-primary" href="{{path_for('home.user.edit', {id: usuario.id} )}}">Editar</a>
+          <a class="btn btn-danger" href="{{path_for('home.user.destroy', {id: usuario.id} )}}">Remover</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+</div>
+{% endblock %}

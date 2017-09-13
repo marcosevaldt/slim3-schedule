@@ -1,0 +1,49 @@
+{% extends 'interface/home.twig' %}
+{% block content %}
+
+{% include 'error/error.twig' %}
+{% include 'flash/flash.twig' %}
+
+<div class="col-md-12">
+
+<div id="calendar"></div>
+
+</div>
+
+{% include 'interface/libraryjs.twig' %}
+
+<script>
+$(document).ready(function() {
+
+  $('#calendar').fullCalendar({
+    eventClick: function(calEvent, jsEvent, view) {
+      window.location.href = "http://localhost/calendar/public/home/edit/" + calEvent.id;
+    },
+    header: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'month,agendaWeek,agendaDay,listWeek'
+    },
+    defaultDate: '{{ "now"|date("Y/m/d") }}',
+    locale: 'pt-br',
+    navLinks: true, // can click day/week names to navigate views
+    editable: true,
+    eventLimit: true, // allow "more" link when too many events
+    events: [
+      {% for agendamento in agendamentos %}
+      {
+
+        id: '{{agendamento.id}}',
+        title: '{{agendamento.idusuario.email}}',
+        start: '{{agendamento.periodoinicial.date}}',
+        end: '{{agendamento.periodofinal.date}}'
+      },
+      {% endfor %}
+    ]
+  });
+
+});
+
+</script>
+
+{% endblock %}

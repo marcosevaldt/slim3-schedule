@@ -1,5 +1,3 @@
-// DateTimePicker
-//$('.datetimepicker').datetimepicker();
-
-// DatePicker
-//$('#datepicker').datepicker({ autoclose: true });
+$('.datetimepicker').datetimepicker({
+    format: 'dd/mm/yyyy hh:ii'
+});

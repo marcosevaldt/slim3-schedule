@@ -1,0 +1,23 @@
+{% extends 'interface/home.twig' %}
+{% block content %}
+
+{% include 'error/error.twig' %}
+{% include 'flash/flash.twig' %}
+
+<div class="col-md-4 offset-md-4">
+
+<form>
+
+  <div class="form-group row">
+    <label for="numero" class="col-8 col-form-label">Número da Sala</label>
+    <div class="col-12">
+      <input class="form-control" type="number" placeholder="303" name="numero" required value="{{sala.numero}}">
+    </div>
+  </div>
+  <input type="hidden" value="{{sala.id}}" name="id"/>
+
+  <button class="btn btn-primary" formmethod="POST" formaction="{{path_for('home.salas.update')}}">Atualizar</button>
+</form>
+
+</div>
+{% endblock %}

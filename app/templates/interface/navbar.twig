@@ -2,15 +2,30 @@
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="#">King Calendar</a>
+  <a class="navbar-brand" href="{{path_for('home.index')}}">King Calendar</a>
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
+      {% if not session %}
       <li class="nav-item">
         <a class="nav-link" href="{{path_for('login.index')}}">Acessar</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{path_for('register.index')}}">Registrar</a>
       </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="{{path_for('login.destroy')}}">Sair</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{path_for('home.user.show')}}">Cadastrar Usuários</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{path_for('home.salas.show')}}">Cadastar Salas</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{path_for('home.agendamento.show')}}">Agendamentos</a>
+      </li>
+      {% endif %}
     </ul>
   </div>
 </nav>

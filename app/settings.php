@@ -22,6 +22,18 @@ return [
             'Admin' => [
                 'home.index',
                 'home.general',
+                'home.user.show',
+                'home.user.create',
+                'home.user.store',
+                'home.user.edit',
+                'home.user.update',
+                'home.user.destroy',
+                'home.salas.show',
+                'home.salas.create',
+                'home.salas.store',
+                'home.salas.edit',
+                'home.salas.update',
+                'home.salas.destroy',                
             ],
         ],
         // Monolog Settings
