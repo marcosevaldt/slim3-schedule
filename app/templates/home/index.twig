@@ -5,8 +5,10 @@
 {% include 'flash/flash.twig' %}
 
 <div class="col-md-8 offset-md-3">
+  {% if role == "Admin" %}
   <a href="{{path_for('home.user.show')}}"><img src="{{base_url()}}/images/user.png" title="Gerenciar Usuários"/></a>
   <a href="{{path_for('home.salas.show')}}"><img src="{{base_url()}}/images/door.png" title="Gerenciar Salas"/></a>
+  {% endif %}
   <a href="{{path_for('home.agendamento.show')}}"><img src="{{base_url()}}/images/calendar.png" title="Agendamentos"/></a>
   <a href="{{path_for('home.agendamento.agendamentos')}}"><img src="{{base_url()}}/images/pin.png" title="Meus Agendamentos"/></a>
 </div>
