@@ -9,7 +9,10 @@ class LoginAction extends Controller{
 
 	public function index($request, $response)
 	{
-		return $this->view->render($response, 'login/index.twig');
+		if(!$this->session->get('userSession')){
+			return $this->view->render($response, 'login/index.twig');
+		}
+			return $response->withRedirect($this->router->pathFor('home.index'));
 	}
 
 	public function store($request, $response)

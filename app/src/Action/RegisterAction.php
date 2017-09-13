@@ -10,7 +10,10 @@ class RegisterAction extends Controller{
 
 	public function index($request, $response)
 	{
-		return $this->view->render($response, 'register/index.twig');
+		if(!$this->session->get('userSession')){
+			return $this->view->render($response, 'register/index.twig');
+		}
+			return $response->withRedirect($this->router->pathFor('home.index'));
 	}
 
 	public function store($request, $response)

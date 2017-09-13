@@ -18,6 +18,7 @@ return [
         'auth' => [
             'Convidado' => [
                 'home.index',
+                'login.destroy',
                 'home.agendamento.show',
                 'home.agendamento.calendar',
                 'home.agendamento.agendar',
@@ -28,6 +29,7 @@ return [
             ],
             'Admin' => [
                 'home.index',
+                'login.destroy',
                 'home.general',
                 'home.user.show',
                 'home.user.create',

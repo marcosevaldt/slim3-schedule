@@ -3,7 +3,7 @@
 // Login
 $app->get('/', 'App\Action\LoginAction:index')->setName('login.index');
 $app->post('/login', 'App\Action\LoginAction:store')->setName('login.store');
-$app->get('/login/destroy', 'App\Action\LoginAction:destroy')->setName('login.destroy');
+$app->get('/login/destroy', 'App\Action\LoginAction:destroy')->setName('login.destroy')->add($guardian);
 
 // Register
 $app->get('/register', 'App\Action\RegisterAction:index')->setName('register.index');
