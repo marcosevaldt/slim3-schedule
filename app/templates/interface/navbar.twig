@@ -14,9 +14,6 @@
       </li>
       {% else %}
       <li class="nav-item">
-        <a class="nav-link" href="{{path_for('login.destroy')}}">Sair</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" href="{{path_for('home.user.show')}}">Cadastrar Usuários</a>
       </li>
       <li class="nav-item">
@@ -24,6 +21,9 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{path_for('home.agendamento.show')}}">Agendamentos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{path_for('login.destroy')}}">Sair</a>
       </li>
       {% endif %}
     </ul>

@@ -54,6 +54,13 @@ class AgendamentoAction extends Controller{
 		public function edit($request, $response, $args)
 		{
 			$agendamento = $this->consulta->buscaUm('Agendamentos', $args['id']);
+			$user = $this->consulta->buscaPorEmail($this->session->get('userSession'));
+
+			if($agendamento->getIdUsuario()->getId() != $user->getId()){
+				$this->flash->addMessage('danger', 'Você não pode editar os agendamentos de outras pessoas!');
+				return $response->withRedirect($this->router->pathFor('home.agendamento.show'));
+			}
+
 			return $this->view->render($response, 'home/agendamento/edit.twig', [
 				'agendamento' => $agendamento,
 				'salas' => $this->consulta->buscaTodos('Salas'),

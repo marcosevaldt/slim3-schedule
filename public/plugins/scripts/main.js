@@ -1,3 +1,1 @@
-$('.datetimepicker').datetimepicker({
-    format: 'dd/mm/yyyy hh:ii'
-});
+$('.datetimepicker').datetimepicker({format: 'dd/mm/yyyy hh:00'});
