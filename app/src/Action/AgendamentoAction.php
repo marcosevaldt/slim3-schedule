@@ -43,14 +43,19 @@ class AgendamentoAction extends Controller{
 				return $response->withRedirect($this->router->pathFor('home.agendamento.agendar'));
 			}
 
+			$date = new \DateTime(str_replace('/', '-', $request->getParam('periodo_inicial')));
+			$date->modify('+1 hour');
+			$dataFinal = $date->format('d-m-Y H:i');
+
 			$sala = $this->consulta->buscaUm('Salas', $request->getParam('sala'));
 			$user = $this->consulta->buscaPorEmail($request->getParam('email_user'));
 			$agendamento = $this->resource->loadEntity('Agendamentos');
 			$agendamento->setPeriodoInicial($request->getParam('periodo_inicial'));
-			$agendamento->setPeriodoFinal($request->getParam('periodo_final'));
+			$agendamento->setPeriodoFinal($dataFinal);
 			$agendamento->setIdSala($sala);
 			$agendamento->setIdUsuario($user);
 			$this->resource->insert($agendamento);
+
 
 			$this->flash->addMessage('success', 'Agendamento realizado com sucesso!');
 			return $response->withRedirect($this->router->pathFor('home.agendamento.show'));
