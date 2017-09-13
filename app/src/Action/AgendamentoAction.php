@@ -39,8 +39,8 @@ class AgendamentoAction extends Controller{
 		{
 
 			if($this->consulta->buscaAgendamentoPorData($request->getParam('periodo_inicial'), $request->getParam('sala'))){
-				$this->flash->addMessage('success', 'Já existe agendamento neste horário para esta sala!');
-				return $response->withRedirect($this->router->pathFor('home.agendamento.create'));
+				$this->flash->addMessage('danger', 'Já existe agendamento neste horário para esta sala!');
+				return $response->withRedirect($this->router->pathFor('home.agendamento.agendar'));
 			}
 
 			$sala = $this->consulta->buscaUm('Salas', $request->getParam('sala'));
