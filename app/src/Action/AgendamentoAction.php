@@ -37,6 +37,12 @@ class AgendamentoAction extends Controller{
 
 		public function store($request, $response)
 		{
+
+			if($this->consulta->buscaAgendamentoPorData($request->getParam('periodo_inicial'), $request->getParam('sala'))){
+				$this->flash->addMessage('success', 'Já existe agendamento neste horário para esta sala!');
+				return $response->withRedirect($this->router->pathFor('home.agendamento.create'));
+			}
+
 			$sala = $this->consulta->buscaUm('Salas', $request->getParam('sala'));
 			$user = $this->consulta->buscaPorEmail($request->getParam('email_user'));
 			$agendamento = $this->resource->loadEntity('Agendamentos');
@@ -48,7 +54,6 @@ class AgendamentoAction extends Controller{
 
 			$this->flash->addMessage('success', 'Agendamento realizado com sucesso!');
 			return $response->withRedirect($this->router->pathFor('home.agendamento.show'));
-
 		}
 
 		public function edit($request, $response, $args)

@@ -50,4 +50,9 @@ class Consultas
 			return $objetos = $this->entityManager->getRepository('App\Entity\Agendamentos')->findBy(array('idSala' => $idSala));
 		}
 
+		public function buscaAgendamentoPorData($data, $sala){
+			$date = new \DateTime(str_replace("/","-", $data));
+			return $objetos = $this->entityManager->getRepository('App\Entity\Agendamentos')->findBy(array('idSala' => $sala ,'periodoInicial' => $date));
+		}
+
 }
