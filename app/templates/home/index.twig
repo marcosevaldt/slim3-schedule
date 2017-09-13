@@ -4,6 +4,10 @@
 {% include 'error/error.twig' %}
 {% include 'flash/flash.twig' %}
 
-<div id='calendar'></div>
+<div class="col-md-6 offset-md-4">
+  <a href="{{path_for('home.user.show')}}"><img src="{{base_url()}}/images/user.png" title="Gerenciar Usuários"/></a>
+  <a href="{{path_for('home.salas.show')}}"><img src="{{base_url()}}/images/door.png" title="Gerenciar Salas"/></a>
+  <a href="{{path_for('home.agendamento.show')}}"><img src="{{base_url()}}/images/calendar.png" title="Agendamentos"/></a>
+</div>
 
 {% endblock %}
