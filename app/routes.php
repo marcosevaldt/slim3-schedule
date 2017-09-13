@@ -29,10 +29,10 @@ $app->post('/home/salas/update', 'App\Action\SalasAction:update')->setName('home
 $app->get('/home/salas/destroy/{id}', 'App\Action\SalasAction:destroy')->setName('home.salas.destroy')->add($guardian);
 
 // Agendamento
-$app->get('/home/agendamento/show', 'App\Action\AgendamentoAction:index')->setName('home.agendamento.show');
-$app->get('/home/agendamento/calendario/{id}', 'App\Action\AgendamentoAction:showCalendar')->setName('home.agendamento.calendar');
-$app->get('/home/agendamento/agendar', 'App\Action\AgendamentoAction:showAgendarSala')->setName('home.agendamento.agendar');
-$app->post('/home/agendamento/agendar/store', 'App\Action\AgendamentoAction:store')->setName('home.agendamento.store');
-$app->get('/home/agendamento/agendar/edit/{id}', 'App\Action\AgendamentoAction:edit')->setName('home.agendamento.edit');
-$app->post('/home/agendamento/agendar/destroy', 'App\Action\AgendamentoAction:destroy')->setName('home.agendamento.destroy');
-$app->post('/home/agendamento/agendar/update', 'App\Action\AgendamentoAction:update')->setName('home.agendamento.update');
+$app->get('/home/agendamento/show', 'App\Action\AgendamentoAction:index')->setName('home.agendamento.show')->add($guardian);
+$app->get('/home/agendamento/calendario/{id}', 'App\Action\AgendamentoAction:showCalendar')->setName('home.agendamento.calendar')->add($guardian);
+$app->get('/home/agendamento/agendar', 'App\Action\AgendamentoAction:showAgendarSala')->setName('home.agendamento.agendar')->add($guardian);
+$app->post('/home/agendamento/agendar/store', 'App\Action\AgendamentoAction:store')->setName('home.agendamento.store')->add($guardian);
+$app->get('/home/agendamento/agendar/edit/{id}', 'App\Action\AgendamentoAction:edit')->setName('home.agendamento.edit')->add($guardian);
+$app->post('/home/agendamento/agendar/destroy', 'App\Action\AgendamentoAction:destroy')->setName('home.agendamento.destroy')->add($guardian);
+$app->post('/home/agendamento/agendar/update', 'App\Action\AgendamentoAction:update')->setName('home.agendamento.update')->add($guardian);
