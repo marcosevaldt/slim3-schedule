@@ -18,13 +18,15 @@
     </thead>
     <tbody>
       {% for usuario in usuarios %}
-      <tr>
-        <td>{{usuario.email}}</td>
-        <td>
-          <a class="btn btn-primary" href="{{path_for('home.user.edit', {id: usuario.id} )}}">Editar</a>
-          <a class="btn btn-danger" href="{{path_for('home.user.destroy', {id: usuario.id} )}}">Remover</a>
-        </td>
-      </tr>
+        {% if usuario.email != session %}
+          <tr>
+            <td>{{usuario.email}}</td>
+            <td>
+              <a class="btn btn-primary" href="{{path_for('home.user.edit', {id: usuario.id} )}}">Editar</a>
+              <a class="btn btn-danger" href="{{path_for('home.user.destroy', {id: usuario.id} )}}">Remover</a>
+            </td>
+          </tr>
+        {% endif %}
       {% endfor %}
     </tbody>
   </table>
