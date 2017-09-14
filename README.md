@@ -36,3 +36,19 @@ Após clonar este repositório:
 * Esta aplicação está dividida em dois níveis de permissão: `admin` e `convidado`.
 * Novos usuários serão criados como convidado por padrão, e só terão acesso ao agendamento das salas e verificação dos seus agendamentos.
 * O usuário admin, tem acesso ao CRUD das salas, e do CRUD dos usuários bem como pode agendar e verificar seus agendamentos.
+
+## Screenshots
+# Logar
+![](https://image.ibb.co/bRkKjF/login.png)
+# Registrar
+![](https://image.ibb.co/jAGgya/register.png)
+# Home
+![](https://image.ibb.co/kHOTda/home_icons.png)
+# Agendamentos marcados
+![](https://image.ibb.co/djgEJa/meus_agendamentos.png)
+# CRUD Salas
+![](https://image.ibb.co/d27FPF/crud_sala.png)
+# CRUD Usuários
+![](https://image.ibb.co/g8AkPF/crud_user.png)
+# Agendar Sala
+![](https://image.ibb.co/dZkPJa/agenda_saa.png)
