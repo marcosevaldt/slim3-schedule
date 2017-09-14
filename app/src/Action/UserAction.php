@@ -156,7 +156,7 @@ class UserAction extends Controller
   public function destroy($request, $response, $args)
   {
     $user = $this->consulta->buscaUm('Usuarios', $args['id']);
-    
+
     if($agendamentos = $this->consulta->buscaAgendamentoPorUsuario($user)){
       foreach($agendamentos as $agendamento){
         $this->resource->delete($agendamento);

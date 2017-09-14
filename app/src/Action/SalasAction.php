@@ -88,6 +88,13 @@ class SalasAction extends Controller
   public function destroy($request, $response, $args)
   {
     $sala = $this->consulta->buscaUm('Salas', $args['id']);
+
+    if($agendamentos = $this->consulta->buscaAgendamentoPorSala($sala)){
+      foreach($agendamentos as $agendamento){
+        $this->resource->delete($agendamento);
+      }
+    }
+
     $this->resource->delete($sala);
     $this->flash->addMessage('success', 'Sala deletada com sucesso!');
     return $response->withRedirect($this->router->pathFor('home.salas.show'));
