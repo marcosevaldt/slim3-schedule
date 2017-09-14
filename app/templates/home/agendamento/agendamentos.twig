@@ -14,6 +14,7 @@
         <th>Número da Sala</th>
         <th>Periodo Inicial</th>
         <th>Periodo Final</th>
+        <th>Ações</th>
       </tr>
     </thead>
     <tbody>
@@ -22,6 +23,9 @@
         <td>{{agendamento.idsala.numero}}</td>
         <td>{{agendamento.periodoInicial.date|date('d/m/Y H:i')}}</td>
         <td>{{agendamento.periodoFinal.date|date('d/m/Y H:i')}}</td>
+        <td>
+          <a class="btn btn-primary" href="{{path_for('home.agendamento.edit', {id: agendamento.id} )}}">Editar</a>
+        </td>
       </tr>
       {% endfor %}
     </tbody>
