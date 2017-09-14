@@ -89,6 +89,10 @@ class SalasAction extends Controller
   {
     $sala = $this->consulta->buscaUm('Salas', $args['id']);
 
+    /**
+     * Verifico se a sala tem agendamento e deleto antes de deletar a propria sala
+     * @var [type]
+     */
     if($agendamentos = $this->consulta->buscaAgendamentoPorSala($sala)){
       foreach($agendamentos as $agendamento){
         $this->resource->delete($agendamento);

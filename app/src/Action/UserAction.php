@@ -157,6 +157,10 @@ class UserAction extends Controller
   {
     $user = $this->consulta->buscaUm('Usuarios', $args['id']);
 
+    /**
+     * Verifico se existe algum agendamento deste usuario e deleto antes de excluir o proprio usuario
+     * @var [type]
+     */
     if($agendamentos = $this->consulta->buscaAgendamentoPorUsuario($user)){
       foreach($agendamentos as $agendamento){
         $this->resource->delete($agendamento);
