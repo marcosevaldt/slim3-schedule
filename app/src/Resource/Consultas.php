@@ -91,4 +91,5 @@ class Consultas
 		return $objetos = $this->entityManager->getRepository('App\Entity\Agendamentos')->findBy(array('idUsuario' => $userId));
 	}
 
+
 }
