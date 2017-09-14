@@ -29,10 +29,19 @@
       <li class="nav-item">
         <a class="nav-link" href="{{path_for('home.agendamento.agendamentos')}}">Meus Agendamentos</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{path_for('login.destroy')}}">Sair</a>
-      </li>
       {% endif %}
     </ul>
+    {% if session %}
+    <form class="form-inline my-2 my-lg-0">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{session}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="{{path_for('login.destroy')}}">Sair</a>
+        </div>
+      </div>
+    </form>
+    {% endif %}
   </div>
 </nav>

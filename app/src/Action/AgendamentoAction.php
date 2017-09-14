@@ -95,6 +95,7 @@ class AgendamentoAction extends Controller{
 	*/
 	public function edit($request, $response, $args)
 	{
+
 		$agendamento = $this->consulta->buscaUm('Agendamentos', $args['id']);
 		$user = $this->consulta->buscaPorEmail($this->session->get('userSession'));
 
